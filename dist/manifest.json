@@ -1,0 +1,42 @@
+{
+  "name": "Image-Recognition-Extension",
+  "version": "1.1",
+  "description": "Browser extension for analyzing images on web pages",
+  "author": "Maxon Filippovich",
+  "browser_action": {
+    "default_popup": "vsp.html",
+    "default_icon": {
+      "32":"icons32.png",
+      "48": "icons48.png",
+      "128": "icons128.png"
+    },
+    "icons": { 
+       "32": "icons32.png",
+       "48": "icons48.png",
+       "128": "icons128.png" }
+  },
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>",
+    "storage",
+    "tabs"
+  ],
+  
+  "background": {
+    "scripts": ["src/background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "manifest_version": 2
+}
