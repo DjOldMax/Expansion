@@ -22,7 +22,9 @@
     "webRequestBlocking",
     "<all_urls>",
     "storage",
-    "tabs"
+    "tabs",
+    "contextMenus",
+    "menus"
   ],
   
   "background": {
