@@ -68,17 +68,29 @@ class BackgroundProcessing {
     for (let i = 0; i < topK; i++) {
       topkValues[i] = valuesAndIndices[i].value;
       topkIndices[i] = valuesAndIndices[i].index;
+      
     }
-
+    
+     
     const topClassesAndProbs = [];
     for (let i = 0; i < topkIndices.length; i++) {
       topClassesAndProbs.push({
         className: IMAGENET_CLASSES[topkIndices[i]],
-        probability: topkValues[i]
+        probability: (topkValues[i]*100).toFixed(2) 
       })
+      var clas = IMAGENET_CLASSES[topkIndices[i]] 
+      var proba = (topkValues[i]*100).toFixed(2) 
+      var chet = 1;
+      
+      
     }
+    if((proba>=90)&&(clas=="lion")){
+      console.log(chet);
+     }
+    
     return topClassesAndProbs;
   }
+      
 
 
   async predict(imgElement) {
@@ -121,6 +133,7 @@ class BackgroundProcessing {
           action: 'IMAGE_PROCESSED',
           payload: meta,
         });
+        
       }
     }
   }
@@ -133,15 +146,26 @@ class BackgroundProcessing {
 
 chrome.contextMenus.create({
   id: "spaceshinobi-google-image-reverse-search",
-  title: "Google Image Reverse Search",
+  title: "Google",
   contexts: ["image"]
 });
+chrome.contextMenus.create({
+  id: "search",
+  title: "Yandex",
+  contexts: ["image"]
+  
+})
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
 	if (info.menuItemId === "spaceshinobi-google-image-reverse-search") {
 		chrome.tabs.create({
 			url: "https://www.google.com/searchbyimage?image_url=" + info.srcUrl
 		});
+  if(info.menuItemId === "search"){
+    chrome.tabs.create({
+			url: "https://yandex.ru/images/search?rpt=" + info.srcUrl
+		});
+  }
 	}
 });
 

@@ -315,7 +315,7 @@ export const IMAGENET_CLASSES = {
   288: 'leopard, Panthera pardus',
   289: 'snow leopard, ounce, Panthera uncia',
   290: 'jaguar, panther, Panthera onca, Felis onca',
-  291: 'lion, king of beasts, Panthera leo',
+  291: 'lion',
   292: 'tiger, Panthera tigris',
   293: 'cheetah, chetah, Acinonyx jubatus',
   294: 'brown bear, bruin, Ursus arctos',
