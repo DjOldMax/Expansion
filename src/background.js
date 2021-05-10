@@ -145,27 +145,42 @@ class BackgroundProcessing {
 }
 
 chrome.contextMenus.create({
-  id: "spaceshinobi-google-image-reverse-search",
+  id: "search google",
   title: "Google",
   contexts: ["image"]
 });
 chrome.contextMenus.create({
-  id: "search",
+  id: "search yandex",
   title: "Yandex",
+  contexts: ["image"]
+  
+})
+chrome.contextMenus.create({
+  id: "search",
+  title: "China",
   contexts: ["image"]
   
 })
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-	if (info.menuItemId === "spaceshinobi-google-image-reverse-search") {
+	if (info.menuItemId === "search google") {
 		chrome.tabs.create({
 			url: "https://www.google.com/searchbyimage?image_url=" + info.srcUrl
 		});
-  if(info.menuItemId === "search"){
+	}
+});
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+	if(info.menuItemId === "search yandex"){
     chrome.tabs.create({
-			url: "https://yandex.ru/images/search?rpt=" + info.srcUrl
-		});
-  }
+      url: "https://yandex.ru/images/search?rpt=imageview&url=" + info.srcUrl
+    });
+	}
+});
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+	if(info.menuItemId === "search"){
+    chrome.tabs.create({
+      url: "https://graph.baidu.com/s?sign=" + info.srcUrl
+    });
 	}
 });
 
