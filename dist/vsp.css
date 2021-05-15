@@ -1,0 +1,29 @@
+/*#################### Кнопки ###################*/
+button {
+    padding: 3px 7px; /* Поля вокруг текста */
+    color: #FF0000; /* Цвет текста */
+     -webkit-border-radius: 2px; /* Радиус*/
+    border-radius:  2px;
+    border: 1px solid rgb(0, 0, 0); /* Параметры рамки */
+   }
+  button.t2 {
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#0206f3), to(#0905e9), color-stop(0.6, #4a08e6), color-stop(0.6,  #404040));
+    color: #FF0000;
+    border: 2px solid  #666;
+    width: 100%;
+    height: 50%;
+  }
+  button.t3 {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#4af264), to(#39ba4d), color-stop(0.6, #4af264),color-stop(0.6,  #404040));
+    color: #FF0000;
+  }
+   button.t4 {
+    background: -webkit-gradient(linear, 0 0, 0  100%, from(#4af264), to(#39ba4d), color-stop(0.6, #4af264), color-stop(0.6,  #404040));
+    color: #FF0000;
+    border: 2px solid  #666;
+  }
+  /*#######################################*/
+  
+  /*#################### Кнопки ###################*/
+  
+  /*#######################################*/
