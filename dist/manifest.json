@@ -6,14 +6,14 @@
   "browser_action": {
     "default_popup": "vsp.html",
     "default_icon": {
-      "32":"icons32.png",
-      "48": "icons48.png",
-      "128": "icons128.png"
+      "32":"image/icons32.png",
+      "48": "image/icons48.png",
+      "128": "image/icons128.png"
     },
     "icons": { 
-       "32": "icons32.png",
-       "48": "icons48.png",
-       "128": "icons128.png" }
+       "32": "image/icons32.png",
+       "48": "image/icons48.png",
+       "128": "image/icons128.png" }
   },
   "permissions": [
     "activeTab",
