@@ -133,65 +133,73 @@ class BackgroundProcessing {
           action: 'IMAGE_PROCESSED',
           payload: meta,
         });
-        
       }
     }
   }
-  
-
-
-
-
 }
 
-chrome.contextMenus.create({
-  id: "search google",
-  title: "Google",
-  contexts: ["image"]
-});
-chrome.contextMenus.create({
-  id: "search yandex",
-  title: "Yandex",
-  contexts: ["image"]
+
+ async function serachinternet (){
+  chrome.contextMenus.create({
+    id: "search google",
+    title: "Google",
+    contexts: ["image"]
+  });
+  chrome.contextMenus.create({
+    id: "search yandex",
+    title: "Yandex",
+    contexts: ["image"]
+    
+  })
+  chrome.contextMenus.create({
+    id: "search",
+    title: "China",
+    contexts: ["image"]
+    
+  })
   
-})
-chrome.contextMenus.create({
-  id: "search",
-  title: "China",
-  contexts: ["image"]
-  
-})
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === "search google") {
+      chrome.tabs.create({
+        url: "https://www.google.com/searchbyimage?image_url=" + info.srcUrl
+      });
+    }
+  });
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if(info.menuItemId === "search yandex"){
+      chrome.tabs.create({
+        url: "https://yandex.ru/images/search?rpt=imageview&url=" + info.srcUrl
+      });
+    }
+  });
+  chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if(info.menuItemId === "search"){
+      chrome.tabs.create({
+        url: "https://graph.baidu.com/s?sign=" + info.srcUrl
+      });
+    }
+  });
+ }
+//  chrome.runtime.onMessage.addListener(
+//   function(request, sender, sendResponse) {
+//       switch (request.directive) {
+//       case "popup-click":
+//           // execute the content script
+//           chrome.tabs.executeScript(null, { // defaults to the current tab
+        
+//           });
+//           sendResponse({}); // sending back empty response to sender
+//           break;
+//       default:
+//           // helps debug when request directive doesn't match
+//           alert("Unmatched request of '" + request + "' from script to background.js from " + sender);
+//       }
+//   }
+// );
 
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-	if (info.menuItemId === "search google") {
-		chrome.tabs.create({
-			url: "https://www.google.com/searchbyimage?image_url=" + info.srcUrl
-		});
-	}
-});
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-	if(info.menuItemId === "search yandex"){
-    chrome.tabs.create({
-      url: "https://yandex.ru/images/search?rpt=imageview&url=" + info.srcUrl
-    });
-	}
-});
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-	if(info.menuItemId === "search"){
-    chrome.tabs.create({
-      url: "https://graph.baidu.com/s?sign=" + info.srcUrl
-    });
-	}
-});
-chrome.runtime.onMessage.addListener(function (msg, sender) {
-  // First, validate the message structure
-  if ((msg.from === 'content') && (msg.subject === 'showPageAction')) {
-    // Enable the page-action for the requesting tab
-    chrome.pageAction.show(sender.tab.id);
-  }
-});
+serachinternet();
 
-
-
+async function on(){
 var bg = new BackgroundProcessing();
+}
 
